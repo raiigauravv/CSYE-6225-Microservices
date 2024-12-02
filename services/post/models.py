@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 import uuid
+from typing import List, Optional
 
 # Post model
 class Post(BaseModel):
@@ -11,6 +12,7 @@ class Post(BaseModel):
     timestamp: str = datetime.now().isoformat()  # Dynamically generate timestamp
     likeCounter: int = 0  # Default value set to 0
     commentCounter: int = 0  # Default value set to 0
+    liked_users: List[str] = [] 
 
 
    

@@ -22,15 +22,15 @@ async def get_post_feed():
 @app.post("/like_post")
 async def like_a_post(engagement: EngagementRequest):
     # Fetch a random postId from the posts collection
-    random_post_id = get_random_post_id()
-    print(random_post_id)
+    #random_post_id = get_random_post_id()
+    random_post_id="e0b5c2fc-9748-4cf8-b45a-664fa7cd8f54"
     if not random_post_id:
         raise HTTPException(status_code=404, detail="No posts available to like.")
     
     # Like the post (increment the like counter)
-    success = like_post(random_post_id)
+    success = like_post(random_post_id, engagement.userId)  # Correctly use engagement.userId
     if not success:
-        raise HTTPException(status_code=404, detail="Post not found")
+        return {"message": f"Like removed from post {random_post_id}."}
     
     return {"message": f"Post {random_post_id} liked successfully!"}
 

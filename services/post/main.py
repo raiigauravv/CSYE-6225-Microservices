@@ -18,6 +18,7 @@ async def create_post_route(post: Post):
         "timestamp": datetime.now(),
         "likeCounter": 0,
         "commentCounter": 0,
+        "liked_users": []
     }
 
     try:

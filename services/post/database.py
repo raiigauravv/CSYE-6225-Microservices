@@ -17,6 +17,7 @@ def create_post(post_data):
     # Generate a unique post ID
     post_data["postId"] = str(uuid.uuid4())  # This is a string ID for the post
     
+    post_data["liked_users"] = []
     # Insert the post into the database
     result = posts_collection.insert_one(post_data)  
     

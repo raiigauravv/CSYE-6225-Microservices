@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import List,Optional
 from datetime import datetime
 import uuid
 
@@ -10,6 +10,7 @@ class Post(BaseModel):
     timestamp: Optional[str] = None  # Optional, will be auto-generated if not provided
     likeCounter: int = 0  # Default value set to 0
     commentCounter: int = 0  # Default value set to 0
+    liked_users: List[str] = []
 
     # Root validator to automatically generate postId and timestamp
    
@@ -21,4 +22,4 @@ class Engagement(BaseModel):
 
 class CommentRequest(BaseModel):
     userId: str  # User who is commenting on the post
-    content: str  # Content of the comment
+    comment: str  # Content of the comment
